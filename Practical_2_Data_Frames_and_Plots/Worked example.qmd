@@ -1,0 +1,60 @@
+---
+title: "Worked example"
+author: "Shihua Zhao"
+---
+```{r}
+library(gt)
+library(tidyverse)
+library(maps)
+
+breeding_sites<- read_csv("data/breeding_site_locations.csv")
+
+gt(breeding_sites)
+
+colnames(breeding_sites)
+glimpse(breeding_sites)
+print (nrow(breeding_sites))
+print(ncol(breeding_sites))
+print(dim(breeding_sites))
+```
+```{r}
+migration_connectivity <- read_csv("data/migratory_connectivity_dataset.csv")
+gt(head(migration_connectivity))
+
+glimpse(dim(migration_connectivity))
+glimpse(migration_connectivity$Tag)
+
+```
+```{r}
+breeding_sites_selected <-breeding_sites|> 
+  select(Site, Longitude, Latitude) |> 
+  distinct() |> 
+  rename(Breeding_Longitude = Longitude, Breeding_Latitude = Latitude)
+
+gt(breeding_sites_selected)
+
+
+```
+
+```{r}
+
+bird_migration <- read_csv("data/migratory_connectivity_dataset.csv")
+
+gt(bird_migration)
+
+bird_migration_selected<-bird_migration |> 
+  select(Site, winterLongitude, winterLatitude,pslon,pslat,iblat,awestlon,awestlat) |> 
+  distinct() |> 
+  rename(Winter_Longitude = winterLongitude, 
+         Winter_Latitude = winterLatitude,
+         Stopover_longitude = pslon,
+         Stopover_latitude = pslat,
+         Iberian_longitude = iblon,
+         Iberian_latitude = iblat,
+         Westmost_longitude = awestlon,
+         Westmost_latitude = awestlat)
+
+get(birdmigration_selected)
+
+```
+

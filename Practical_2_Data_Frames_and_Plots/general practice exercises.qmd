@@ -1,0 +1,13 @@
+---
+title: "General practice exercises"
+author: "Shihua Zhao"
+---
+Using the pipe function |> 
+```{r}
+input_vec <- c(5, -10, 4, -3, 3.5, 11, -1, -1, -1, -1)
+
+print(input_vec |> 
+        mean() |> 
+        round(digits = 1))
+```
+
